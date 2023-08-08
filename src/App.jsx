@@ -14,12 +14,22 @@ function App() {
   return (
     <>
       <div className="card">
-        <h1>{page}</h1>
-        <button onClick={prevPage}>PrevPage</button>
-        <button onClick={nextPage}>NextPage</button>
-        {characters.map(character => (
-          <CharactersCard key={character.id} character={character} />
-        ))}
+        <h1>Page: {page}</h1>
+        <div className="btns">
+          <button onClick={prevPage}>PrevPage</button>
+          <button onClick={nextPage}>NextPage</button>
+        </div>
+        <div className="cards">
+          {
+            characters.map(character => (
+              <CharactersCard key={character.id} character={character} />
+            ))
+          }
+        </div>
+        <div className="btns">
+          <button onClick={prevPage}>PrevPage</button>
+          <button onClick={nextPage}>NextPage</button>
+        </div>
       </div>
     </>
   )

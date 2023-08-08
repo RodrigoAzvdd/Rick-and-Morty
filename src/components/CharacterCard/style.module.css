@@ -1,0 +1,22 @@
+.container {
+    width: 38rem;
+    margin: 2rem;
+    display: flex;
+    background-color: #3C3E44;
+    border-radius: .5rem;
+    gap: 2rem;
+    text-align: left;
+}
+
+.image {
+    border-radius: .5rem 0rem 0rem .5rem;
+    width: 15rem;
+    height: 15rem;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
