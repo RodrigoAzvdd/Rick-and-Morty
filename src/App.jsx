@@ -1,46 +1,52 @@
 import { useContext, useEffect, useRef } from 'react'
 import './App.css'
 import { CharactersContext } from './contexts/CharactersContext'
-import CharactersCard from './components/CharacterCard'
+import CharacterCard from './components/CharacterCard'
 
 function App() {
-
-  const { page, getCharacters, characters, nextPage, prevPage, filterByName } = useContext(CharactersContext)
-
-  useEffect(() => {
-    getCharacters(page)
-  }, [page])
-
-  const input = useRef()
+  const input = useRef(null)
+  const { getCharacters, characters, prevPage, nextPage, page, setPage } = useContext(CharactersContext)
 
   const handleClick = () => {
-    const name = input.current.value
-    filterByName(name)
+    if (input.current) {
+      setPage(1)
+      const value = input.current.value
+      getCharacters(value)
+    }
   }
+
+  useEffect(() => {
+    if (input.current) {
+      const value = input.current.value
+      getCharacters(value)
+    }
+  }, [page])
 
   return (
     <>
-      <div className="card">
-        <h1>Page: {page}</h1>
-        <div>
+      <div className="container">
+        <div className='form'>
           <input ref={input} className='input' type="text" />
           <button onClick={handleClick} className="btn">Buscar</button>
         </div>
         <div className="btns">
-          <button onClick={prevPage}>PrevPage</button>
-          <button onClick={nextPage}>NextPage</button>
+          <button onClick={() => {
+            prevPage()
+            const value = input.current.value
+            getCharacters(value)
+          }}>PrevPage</button>
+
+          <button onClick={() => {
+            nextPage()
+            const value = input.current.value
+            getCharacters(value)
+          }}>NextPage</button>
         </div>
-        <div className="cards">
-          {
-            characters.map(character => (
-              <CharactersCard key={character.id} character={character} />
-            ))
-          }
-        </div>
-        <div className="btns">
-          <button onClick={prevPage}>PrevPage</button>
-          <button onClick={nextPage}>NextPage</button>
-        </div>
+        {
+          characters.map(character => (
+            <CharacterCard character={character} key={character.id} />
+          ))
+        }
       </div>
     </>
   )

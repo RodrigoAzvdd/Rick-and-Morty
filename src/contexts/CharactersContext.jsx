@@ -9,46 +9,48 @@ export const CharactersContext = createContext({})
 
 export function CharactersContextProvider({ children }) {
 
+    // btn buscar => fetch name
+    // input.value == '' ?  => fetch tudo
+    // prevPage ou nextPage => 
+
     const [page, setPage] = useState(1)
+    const [maxPage, setMaxPage] = useState(null)
     const [characters, setCharacters] = useState([])
 
-    const getCharacters = async page => {
-        await fetch(`https://rickandmortyapi.com/api/character/?page=${page}`)
-            .then(async data => {
-                const array = await data.json()
-                setCharacters(array.results)
-            })
-    }
-
-    const filterByName = async name => {
-        await fetch(`https://rickandmortyapi.com/api/character/?name=${name}`)
-        .then(async data => {
-            const filtedCharacters = await data.json()
-            setCharacters(filtedCharacters.results)
-        })
+    const getCharacters = async (name) => {
+        try {
+            await fetch(`https://rickandmortyapi.com/api/character/?page=${page}&name=${name}`)
+                .then(async data => {
+                    data = await data.json()
+                    const pagesLength = data.info.pages
+                    const charactersArray = data.results
+                    setMaxPage(pagesLength)
+                    setCharacters(charactersArray)
+                })
+        } catch (error) {
+            alert('Character not found :(')
+        }
     }
 
     const nextPage = () => {
-        if (page < 42) {
-            setPage(currentState => currentState + 1)
-            getCharacters(page)
+        if (page < maxPage) {
+            setPage(currentPage => currentPage + 1)
         }
     }
 
     const prevPage = () => {
         if (page > 1) {
-            setPage(currentState => currentState - 1)
-            getCharacters(page)
+            setPage(currentPage => currentPage - 1)
         }
     }
 
     const values = {
-        page,
         getCharacters,
-        prevPage,
-        nextPage,
         characters,
-        filterByName
+        page,
+        nextPage,
+        prevPage,
+        setPage
     }
 
     return (
