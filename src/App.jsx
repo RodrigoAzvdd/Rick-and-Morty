@@ -5,11 +5,11 @@ import CharacterCard from './components/CharacterCard'
 
 function App() {
   const input = useRef(null)
-  const { getCharacters, characters, prevPage, nextPage, page, setPage } = useContext(CharactersContext)
+  const { getCharacters, characters, prevPage, nextPage, page, resetPages } = useContext(CharactersContext)
 
   const handleClick = () => {
     if (input.current) {
-      setPage(1)
+      resetPages()
       const value = input.current.value
       getCharacters(value)
     }

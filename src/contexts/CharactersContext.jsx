@@ -9,10 +9,6 @@ export const CharactersContext = createContext({})
 
 export function CharactersContextProvider({ children }) {
 
-    // btn buscar => fetch name
-    // input.value == '' ?  => fetch tudo
-    // prevPage ou nextPage => 
-
     const [page, setPage] = useState(1)
     const [maxPage, setMaxPage] = useState(null)
     const [characters, setCharacters] = useState([])
@@ -44,13 +40,17 @@ export function CharactersContextProvider({ children }) {
         }
     }
 
+    const resetPages = () => {
+        setPage(1)
+    }
+
     const values = {
         getCharacters,
         characters,
         page,
         nextPage,
         prevPage,
-        setPage
+        resetPages
     }
 
     return (
