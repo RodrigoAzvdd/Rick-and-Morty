@@ -12,12 +12,20 @@ export function CharactersContextProvider({ children }) {
     const [page, setPage] = useState(1)
     const [characters, setCharacters] = useState([])
 
-    const getCharacters = async (page) => {
+    const getCharacters = async page => {
         await fetch(`https://rickandmortyapi.com/api/character/?page=${page}`)
             .then(async data => {
                 const array = await data.json()
                 setCharacters(array.results)
             })
+    }
+
+    const filterByName = async name => {
+        await fetch(`https://rickandmortyapi.com/api/character/?name=${name}`)
+        .then(async data => {
+            const filtedCharacters = await data.json()
+            setCharacters(filtedCharacters.results)
+        })
     }
 
     const nextPage = () => {
@@ -39,7 +47,8 @@ export function CharactersContextProvider({ children }) {
         getCharacters,
         prevPage,
         nextPage,
-        characters
+        characters,
+        filterByName
     }
 
     return (
