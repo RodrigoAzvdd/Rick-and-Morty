@@ -12,7 +12,7 @@ export default function Home() {
             gap: '2rem'
         }}>
             <h1 className="title">Rick & Morty API</h1>
-            <Link to={'/search'}>
+            <Link to={'/Rick-and-Morty/search'}>
                 <button className="homeBtn">Search Characters</button>
             </Link>
         </div>

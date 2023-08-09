@@ -5,11 +5,11 @@ import Search from './pages/Search'
 export const router = createBrowserRouter([
     {
         index: true,
-        path: '/home',
+        path: '/Rick-and-Morty/home',
         element: <Home />
     },
     {
-        path: '/search',
+        path: '/Rick-and-Morty/search',
         element: <Search />
     }
 ])
