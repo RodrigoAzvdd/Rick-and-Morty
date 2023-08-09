@@ -1,0 +1,19 @@
+.homeBtn {
+    padding: 1.5rem 10rem;
+    background-color: #000;
+    border: 1px solid #000;
+    border-radius: .5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.homeBtn:hover {
+    background-color: #ff9100;
+    border-color: #ff9100;
+}
+
+.title {
+    font-size: 5rem;
+}

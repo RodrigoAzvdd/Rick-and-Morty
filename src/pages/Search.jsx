@@ -1,22 +1,29 @@
 import '../styles/search.css'
-import { useContext, useEffect, useRef } from "react"
-import { CharactersContext } from "../contexts/CharactersContext"
-import CharactersCard from "../components/CharacterCard"
+import { useContext, useEffect, useRef } from "react";
+import { CharactersContext } from "../contexts/CharactersContext";
+import CharactersCard from "../components/CharacterCard";
 
 export default function Search() {
-
-    const input = useRef(null)
-    const select = useRef(null)
+    const input = useRef(null);
+    const select = useRef(null);
     const { getCharacters, characters, prevPage, nextPage, page, resetPages, changeSpecie, specie } = useContext(CharactersContext)
 
     const handleClick = () => {
-        if (input.current && select) {
+        if (input.current && select.current) {
             changeSpecie(select.current.value)
             resetPages()
             const value = input.current.value
             getCharacters(value, specie)
+            scrollToTop()
         }
-    }
+    };
+
+    const scrollToTop = () => {
+        const cardDiv = document.querySelector(".cards")
+        if (cardDiv) {
+            cardDiv.scrollTop = 0
+        }
+    };
 
     useEffect(() => {
         if (input.current) {
@@ -27,6 +34,7 @@ export default function Search() {
 
     return (
         <div className="container">
+            <h1 className="searchTitle">Search Page</h1>
             <div className='form'>
                 <div className="inputOptions">
                     <select ref={select} name="species" id="species">
@@ -61,12 +69,14 @@ export default function Search() {
                     prevPage()
                     const value = input.current.value
                     getCharacters(value)
+                    scrollToTop()
                 }}></i>
                 <span className='pageCounter'>{page}</span>
                 <i className='bi bi-arrow-right-short' onClick={() => {
                     nextPage()
                     const value = input.current.value
                     getCharacters(value)
+                    scrollToTop()
                 }}></i>
             </div>
         </div>

@@ -10,6 +10,10 @@
   min-height: 100vh;
 }
 
+.searchTitle {
+  font-size: 5rem;
+}
+
 .arrows {
   width: 10rem;
   display: flex;

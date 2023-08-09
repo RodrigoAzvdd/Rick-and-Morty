@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import '../styles/home.css'
 
 export default function Home() {
     return (
@@ -8,11 +9,11 @@ export default function Home() {
             placeContent: 'center',
             minHeight: '100vh',
             alignItems: 'center',
-            gap: '5rem'
+            gap: '2rem'
         }}>
-            <h1>Rick & Morty API</h1>
+            <h1 className="title">Rick & Morty API</h1>
             <Link to={'/search'}>
-                <button>Search Characters</button>
+                <button className="homeBtn">Search Characters</button>
             </Link>
         </div>
     )
