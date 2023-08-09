@@ -1,4 +1,4 @@
-import '../Search.css'
+import '../styles/search.css'
 import { useContext, useEffect, useRef } from "react"
 import { CharactersContext } from "../contexts/CharactersContext"
 import CharactersCard from "../components/CharacterCard"
@@ -28,9 +28,6 @@ export default function Search() {
 
     return (
         <div className="container">
-            <Link to={'/home'}>
-                    <button className='btn'>Back to Home</button>
-                </Link>
             <div className='form'>
                 <div className="inputOptions">
                     <select ref={select} name="species" id="species">
@@ -60,18 +57,18 @@ export default function Search() {
                 }
             </div>
 
-            <div className="btns">
-                <button onClick={() => {
+            <div className="arrows">
+                <i className='bi bi-arrow-left-short' onClick={() => {
                     prevPage()
                     const value = input.current.value
                     getCharacters(value)
-                }}>PrevPage</button>
-
-                <button onClick={() => {
+                }}></i>
+                <span className='pageCounter'>{page}</span>
+                <i className='bi bi-arrow-right-short' onClick={() => {
                     nextPage()
                     const value = input.current.value
                     getCharacters(value)
-                }}>NextPage</button>
+                }}></i>
             </div>
         </div>
     )
