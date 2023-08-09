@@ -41,6 +41,15 @@ function App() {
         </div>
         <button onClick={handleClick} className="btn">Search</button>
       </div>
+      
+      <div className='cards'>
+        {
+          characters.map(character => (
+            <CharacterCard character={character} key={character.id} />
+          ))
+        }
+      </div>
+
       <div className="btns">
         <button onClick={() => {
           prevPage()
@@ -53,13 +62,6 @@ function App() {
           const value = input.current.value
           getCharacters(value)
         }}>NextPage</button>
-      </div>
-      <div className='cards'>
-        {
-          characters.map(character => (
-            <CharacterCard character={character} key={character.id} />
-          ))
-        }
       </div>
     </div>
   )
