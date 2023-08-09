@@ -28,10 +28,10 @@ export default function Search() {
 
     return (
         <div className="container">
-            <div className='form'>
-                <Link to={'/home'}>
-                    <button>Back to Home</button>
+            <Link to={'/home'}>
+                    <button className='btn'>Back to Home</button>
                 </Link>
+            <div className='form'>
                 <div className="inputOptions">
                     <select ref={select} name="species" id="species">
                         <option disabled>Select an Option</option>
