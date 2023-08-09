@@ -2,6 +2,7 @@ import '../Search.css'
 import { useContext, useEffect, useRef } from "react"
 import { CharactersContext } from "../contexts/CharactersContext"
 import CharactersCard from "../components/CharacterCard"
+import { Link } from 'react-router-dom'
 
 export default function Search() {
 
@@ -25,10 +26,12 @@ export default function Search() {
         }
     }, [page, specie])
 
-
     return (
         <div className="container">
             <div className='form'>
+                <Link to={'/home'}>
+                    <button>Back to Home</button>
+                </Link>
                 <div className="inputOptions">
                     <select ref={select} name="species" id="species">
                         <option disabled>Select an Option</option>
