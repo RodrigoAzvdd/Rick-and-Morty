@@ -54,11 +54,13 @@ function App() {
           getCharacters(value)
         }}>NextPage</button>
       </div>
-      {
-        characters.map(character => (
-          <CharacterCard character={character} key={character.id} />
-        ))
-      }
+      <div className='cards'>
+        {
+          characters.map(character => (
+            <CharacterCard character={character} key={character.id} />
+          ))
+        }
+      </div>
     </div>
   )
 }
