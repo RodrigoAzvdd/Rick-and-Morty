@@ -45,7 +45,7 @@ export default function Search() {
 
                     <input ref={input} className='input' type="text" placeholder={`Character Name`} />
                 </div>
-                <button onClick={handleClick} className="btn">Search</button>
+                <button onClick={handleClick} className="searchBtn">Search</button>
             </div>
 
             <div className='cards'>
