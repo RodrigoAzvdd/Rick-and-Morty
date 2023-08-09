@@ -5,13 +5,15 @@ import CharacterCard from './components/CharacterCard'
 
 function App() {
   const input = useRef(null)
-  const { getCharacters, characters, prevPage, nextPage, page, resetPages } = useContext(CharactersContext)
+  const select = useRef(null)
+  const { getCharacters, characters, prevPage, nextPage, page, resetPages, changeSpecie, specie } = useContext(CharactersContext)
 
   const handleClick = () => {
-    if (input.current) {
+    if (input.current && select) {
+      changeSpecie(select.current.value)
       resetPages()
       const value = input.current.value
-      getCharacters(value)
+      getCharacters(value, specie)
     }
   }
 
@@ -20,13 +22,24 @@ function App() {
       const value = input.current.value
       getCharacters(value)
     }
-  }, [page])
+  }, [page, specie])
 
   return (
     <div className="container">
       <div className='form'>
-        <input ref={input} className='input' type="text" />
-        <button onClick={handleClick} className="btn">Buscar</button>
+        <div className="inputOptions">
+          <select ref={select} name="species" id="species">
+            <option disabled>Select an Option</option>
+            <option value={''}>All Species</option>
+            <option value={'Human'}>Human</option>
+            <option value={'Alien'}>Alien</option>
+            <option value={'Humanoid'}>Humanoid</option>
+            <option value={'Robot'}>Robot</option>
+          </select>
+
+          <input ref={input} className='input' type="text" placeholder={`Character Name`} />
+        </div>
+        <button onClick={handleClick} className="btn">Search</button>
       </div>
       <div className="btns">
         <button onClick={() => {

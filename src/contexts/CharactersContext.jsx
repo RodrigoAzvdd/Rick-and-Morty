@@ -12,10 +12,19 @@ export function CharactersContextProvider({ children }) {
     const [page, setPage] = useState(1)
     const [maxPage, setMaxPage] = useState(null)
     const [characters, setCharacters] = useState([])
+    const [specie, setSpecie] = useState('')
+
+    const changeSpecie = (specie) => {
+        if (specie == '') {
+            setSpecie('')
+        } else {
+            setSpecie(specie)
+        }
+    }
 
     const getCharacters = async (name) => {
         try {
-            await fetch(`https://rickandmortyapi.com/api/character/?page=${page}&name=${name}`)
+            await fetch(`https://rickandmortyapi.com/api/character/?page=${page}&name=${name}&species=${specie}`)
                 .then(async data => {
                     data = await data.json()
                     const pagesLength = data.info.pages
@@ -50,7 +59,9 @@ export function CharactersContextProvider({ children }) {
         page,
         nextPage,
         prevPage,
-        resetPages
+        resetPages,
+        changeSpecie,
+        specie
     }
 
     return (
