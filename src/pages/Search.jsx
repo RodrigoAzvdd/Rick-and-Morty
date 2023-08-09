@@ -2,7 +2,6 @@ import '../styles/search.css'
 import { useContext, useEffect, useRef } from "react"
 import { CharactersContext } from "../contexts/CharactersContext"
 import CharactersCard from "../components/CharacterCard"
-import { Link } from 'react-router-dom'
 
 export default function Search() {
 
