@@ -5,7 +5,7 @@ import Search from './pages/Search'
 export const router = createBrowserRouter([
     {
         index: true,
-        path: '/Rick-and-Morty/home',
+        path: '/Rick-and-Morty/',
         element: <Home />
     },
     {
