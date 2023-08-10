@@ -19,13 +19,30 @@
     text-align: center;
 }
 
-@media (max-width: 550px) {
+@media (max-width: 600px) {
     .title {
         font-size: 3rem;
     }
 
     .homeBtn {
         padding: 1.5rem 5rem;
+        background-color: #000;
+        border: 1px solid #000;
+        border-radius: .5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: .5s;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 380px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .homeBtn {
+        padding: 1rem 3rem;
         background-color: #000;
         border: 1px solid #000;
         border-radius: .5rem;

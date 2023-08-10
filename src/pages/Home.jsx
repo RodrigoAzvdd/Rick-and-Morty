@@ -11,7 +11,7 @@ export default function Home() {
             alignItems: 'center',
             gap: '2rem'
         }}>
-            <h1 className="title">Rick & Morty API</h1>
+            <h1 className="title">Rick and Morty Explorer</h1>
             <Link to={'/Rick-and-Morty/search'}>
                 <button className="homeBtn">Search Characters</button>
             </Link>
