@@ -13,7 +13,7 @@ export default function Home() {
         }}>
             <h1 className="title">Rick and Morty Explorer</h1>
             <Link to={'/Rick-and-Morty/search'}>
-                <button className="homeBtn">Search Characters</button>
+                <button className="homeBtn">Let&apos;s Search</button>
             </Link>
         </div>
     )
