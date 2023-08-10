@@ -16,7 +16,7 @@ export default function Search() {
             getCharacters(value, specie)
             scrollToTop()
         }
-    };
+    }
 
     const scrollToTop = () => {
         const cardDiv = document.querySelector(".cards")
