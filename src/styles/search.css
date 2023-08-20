@@ -28,12 +28,12 @@
   font-weight: 600;
 }
 
-.bi {
+.arrow {
   font-size: 2rem;
 }
 
-.bi:hover {
-  color: #575757;
+.arrow:hover {
+  color: #ff9100;
   cursor: pointer;
 }
 

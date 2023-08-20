@@ -62,14 +62,14 @@ export default function Search() {
                </div>
 
                <div className="arrows">
-                    <i className='bi bi-arrow-left-short' onClick={() => {
+                    <i className='arrow bi bi-arrow-left-short' onClick={() => {
                          prevPage()
                          const value = input.current.value
                          getCharacters(value)
                          scrollToTop()
                     }}></i>
                     <span className='pageCounter'>{page}</span>
-                    <i className='bi bi-arrow-right-short' onClick={() => {
+                    <i className='arrow bi bi-arrow-right-short' onClick={() => {
                          nextPage()
                          const value = input.current.value
                          getCharacters(value)
