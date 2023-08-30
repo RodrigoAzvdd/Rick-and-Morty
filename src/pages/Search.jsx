@@ -26,8 +26,11 @@ export default function Search() {
      };
 
      useEffect(() => {
-          showCharacters()
-     }, [page, specie])
+          if (input.current) {
+              const value = input.current.value
+              getCharacters(value)
+          }
+      }, [page, specie])
 
      return (
           <div className="container">
