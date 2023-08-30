@@ -27,7 +27,7 @@ export default function Search() {
 
      useEffect(() => {
           showCharacters()
-     }, [page, specie, select])
+     }, [page, specie])
 
      return (
           <div className="container">
